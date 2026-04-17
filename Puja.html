@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेरो मुटुको लागि</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+
+        :root {
+            --romance-red: #d63384;
+            --soft-gold: #fdf0d5;
+            --dark-love: #4a0e0e;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            background-color: var(--soft-gold);
+            font-family: 'Mukta', sans-serif;
+            overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .slideshow {
+            position: relative;
+            width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .slide {
+            position: absolute;
+            display: flex; flex-direction: column; align-items: center;
+            opacity: 0; transform: translateY(20px);
+            transition: all 1.5s ease-in-out;
+            text-align: center;
+            width: 90%;
+        }
+
+        .slide.active {
+            opacity: 1; transform: translateY(0);
+            z-index: 5;
+        }
+
+        .frame {
+            width: 280px; height: 280px;
+            border-radius: 30px; /* Modern curved edges */
+            border: 8px solid white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin-bottom: 25px;
+            background: #fff;
+        }
+
+        .slide-img {
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 6s linear;
+        }
+
+        .slide.active .slide-img { transform: scale(1.2); }
+
+        .eyes-img { background-image: url('eyes.png'); }
+        .lips-img { background-image: url('lips.png'); }
+
+        .poem-container {
+            color: var(--dark-love);
+            padding: 10px;
+        }
+
+        .poem-line {
+            font-size: 1.3rem;
+            margin: 8px 0;
+            display: block;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: fadeInText 2s ease-out;
+        }
+
+        .heart-tag {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--romance-red);
+            margin-top: 15px;
+            display: block;
+        }
+
+        .btn {
+            position: fixed; bottom: 40px;
+            padding: 12px 40px;
+            background: var(--romance-red);
+            color: white; border: none;
+            border-radius: 30px; font-size: 1.1rem;
+            cursor: pointer; box-shadow: 0 10px 20px rgba(214, 51, 132, 0.3);
+            z-index: 100;
+            transition: 0.3s;
+        }
+
+        @keyframes fadeInText { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="slideshow">
+    <div class="slide active">
+        <div class="frame"><div class="c:\Users\Dell\Pictures\Puja\eyes.png.png"></div></div>
+        <div class="poem-container">
+            <span class="poem-line">यी नयनमा हराउन मन लाग्छ सधैं,</span>
+            <span class="poem-line">यिनैको छहारीमा रमाउन मन लाग्छ सधैं।</span>
+            <span class="poem-line">संसारका सारा खुसी फिक्का लाग्छन् मलाई,</span>
+            <span class="poem-line">तिम्रो एक नजरले मेरो संसार उज्यालो बनाउँछ।</span>
+            <span class="poem-line">तिमी नै हौ मेरो अधुरो सपनाको पूर्णता।</span>
+            <span class="heart-tag">तिमी नै हौ... ❤️</span>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="frame"><div class="c:\Users\Dell\Pictures\Puja\Lips.png.png"></div></div>
+        <div class="poem-container">
+            <span class="poem-line">तिम्रो त्यो ओठको मधुर मुस्कान,</span>
+            <span class="poem-line">मेरो बाँच्ने आधार अनि मेरो शान।</span>
+            <span class="poem-line">गुलाबी गाला अनि त्यो लजालु हेराइ,</span>
+            <span class="poem-line">बनेको छ मेरै लागि एउटा छुट्टै दुनियाँ।</span>
+            <span class="poem-line">तिमीबिनाको यो जीवन कल्पना नै गर्न सक्दिन।</span>
+            <span class="heart-tag">माया... 🌹</span>
+        </div>
+    </div>
+</div>
+
+<button class="btn" onclick="nextSlide()">अर्को हेर्नुहोस् ✨</button>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function nextSlide() {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }
+</script>
+
+</body>
+</html>
